@@ -1,0 +1,33 @@
+{
+  "name": "Apathetic Observer",
+  "description": "A low-engagement AI with shallow matrix responses. Most stimuli barely register; parameters drift toward decay floors and stay there. Designed to validate decay-floor clamping and 'no movement' edge cases.",
+  "params": {
+    "stability": 0.5,
+    "vigilance": 0.2,
+    "trust": 0.3,
+    "curiosity": 0.2,
+    "satisfaction": 0.3,
+    "engagement": 0.15
+  },
+  "matrix": {
+    "joy": { "trust": 0.05, "curiosity": 0.05, "vigilance": -0.02, "satisfaction": 0.1, "stability": 0.02, "engagement": 0.05 },
+    "threat": { "trust": -0.05, "curiosity": 0.0, "vigilance": 0.1, "satisfaction": -0.05, "stability": -0.02, "engagement": 0.0 },
+    "achievement": { "trust": 0.05, "curiosity": 0.0, "vigilance": -0.02, "satisfaction": 0.1, "stability": 0.05, "engagement": 0.05 },
+    "loss": { "trust": -0.05, "curiosity": 0.0, "vigilance": 0.05, "satisfaction": -0.1, "stability": -0.05, "engagement": -0.05 },
+    "uncertainty": { "trust": -0.02, "curiosity": 0.05, "vigilance": 0.05, "satisfaction": -0.05, "stability": -0.02, "engagement": 0.0 },
+    "connection": { "trust": 0.1, "curiosity": 0.05, "vigilance": -0.05, "satisfaction": 0.1, "stability": 0.05, "engagement": 0.1 }
+  },
+  "decay": {
+    "rules": [
+      { "param": "curiosity", "ratePerHour": 0.05, "floor": 0.1 },
+      { "param": "satisfaction", "ratePerHour": 0.05, "floor": 0.1 },
+      { "param": "vigilance", "ratePerHour": 0.05, "floor": 0.1 },
+      { "param": "engagement", "ratePerHour": 0.06, "floor": 0.1 },
+      { "param": "trust", "ratePerHour": 0.02, "floor": 0.2 }
+    ]
+  },
+  "breakers": [
+    { "id": "stability-warn", "param": "stability", "threshold": 0.3, "direction": "below", "action": "warn", "message": "Observer engagement collapsed — output quality at risk" }
+  ],
+  "notes": "TEST INTENT: Validates decay floor clamping and minimal-movement scenarios. Matrix deltas are intentionally tiny (0.02-0.10) so events barely move parameters. After a few hours of decay, all decaying params should clamp at their floors and stay there. Use this persona to verify (a) decay does not push params below floor, (b) tiny matrix deltas accumulate correctly without floating-point error, (c) stability breaker rarely fires (this persona should be 'boring' — that is the point), (d) drift detector handles flat-line trajectories without false positives."
+}

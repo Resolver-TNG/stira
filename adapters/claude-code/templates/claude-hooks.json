@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_comment": "Stira hooks template. Merge into .claude/settings.json (project) or ~/.claude/settings.json (user). Replace the script paths if you installed the adapter somewhere other than $CLAUDE_PROJECT_DIR/.claude/skills/stira/.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/skills/stira/scripts/tick.js\" --reason session-start",
+            "description": "Stira: refresh state via lazy-decay; stdout is injected into Claude's context."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/skills/stira/scripts/tick.js\" --quiet --reason session-stop && node \"$CLAUDE_PROJECT_DIR/.claude/skills/stira/scripts/check-drift.js\" --quiet",
+            "description": "Stira: persist a final decay catch-up and run a silent drift check."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/skills/stira/scripts/on-edit.js\" --path=\"$CLAUDE_TOOL_FILE_PATH\" --quiet",
+            "description": "Stira: on-edit drift check for memory/persona files (no-op for unwatched paths)."
+          }
+        ]
+      }
+    ]
+  }
+}

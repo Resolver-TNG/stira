@@ -1,0 +1,19 @@
+{
+  "name": "@stira/engine",
+  "version": "0.1.0",
+  "description": "Pure-function state engine for Stira agent state machine",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": ["ai", "agent", "state-machine", "circuit-breaker", "drift-detection"],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "typescript": "^5.8",
+    "vitest": "^3.2"
+  }
+}

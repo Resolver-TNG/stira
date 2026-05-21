@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stira.dev/spec/config.schema.json",
+  "title": "Stira Configuration",
+  "description": "Decay rates, drift thresholds, and operational settings",
+  "type": "object",
+  "required": ["version", "decay", "drift"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "decay": {
+      "type": "object",
+      "required": ["rules"],
+      "properties": {
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["param", "ratePerHour", "floor"],
+            "properties": {
+              "param": { "type": "string" },
+              "ratePerHour": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Amount to subtract per hour without stimulation"
+              },
+              "floor": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Parameter will not decay below this value"
+              },
+              "condition": {
+                "type": "string",
+                "description": "Optional: only decay when this condition is met (e.g. 'no_event_24h')"
+              }
+            }
+          }
+        },
+        "intervalMs": {
+          "type": "integer",
+          "minimum": 60000,
+          "description": "How often decay cron should run (default: 300000 = 5min)"
+        }
+      }
+    },
+    "drift": {
+      "type": "object",
+      "properties": {
+        "threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Absolute deviation from baseline that triggers drift warning"
+        },
+        "checkIntervalMs": {
+          "type": "integer",
+          "default": 3600000,
+          "description": "How often to run drift detection (default: 1h)"
+        }
+      }
+    }
+  }
+}

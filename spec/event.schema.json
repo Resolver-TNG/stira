@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stira.dev/spec/event.schema.json",
+  "title": "Stira Event",
+  "description": "A stimulus event that may trigger state transition",
+  "type": "object",
+  "required": ["id", "timestamp", "category", "intensity"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "category": {
+      "type": "string",
+      "description": "Trigger category (must match a key in matrix.triggers)"
+    },
+    "intensity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "How strongly the event fires (0=negligible, 1=maximum)"
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Why this category was chosen. Required for audit trail."
+    },
+    "source": {
+      "type": "string",
+      "enum": ["user", "system", "tool", "self"],
+      "description": "Origin of the event"
+    },
+    "excerpt": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Truncated text that triggered the event"
+    },
+    "traceId": {
+      "type": "string",
+      "description": "Session/conversation correlation id for multi-turn trajectory tracking"
+    },
+    "turn": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "0-indexed turn number within the trace"
+    }
+  }
+}

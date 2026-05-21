@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stira.dev/spec/breaker.schema.json",
+  "title": "Stira Circuit Breaker Rules",
+  "description": "Safety constraints that activate when parameters cross thresholds",
+  "type": "object",
+  "required": ["version", "rules"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "param", "threshold", "direction", "action", "message"],
+        "properties": {
+          "id": { "type": "string" },
+          "param": {
+            "type": "string",
+            "enum": ["stability", "vigilance"],
+            "description": "Only fixed-core params can trigger breakers"
+          },
+          "threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+          "direction": {
+            "type": "string",
+            "enum": ["below", "above"],
+            "description": "Fire when param goes below/above threshold"
+          },
+          "action": {
+            "type": "string",
+            "enum": ["warn", "block", "notify"],
+            "description": "warn=log, block=restrict actions, notify=alert operator"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable explanation of what happened"
+          },
+          "resetMode": {
+            "type": "string",
+            "enum": ["auto", "manual"],
+            "default": "auto",
+            "description": "auto = self-resolves once value clears threshold +/- hysteresis (typical for warn/notify); manual = stays active until operator clears (recommended for block)"
+          },
+          "hysteresis": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.5,
+            "default": 0.05,
+            "description": "Margin around threshold for auto-recovery, prevents flapping. For direction=below: resolved at >= threshold + hysteresis; for direction=above: resolved at <= threshold - hysteresis"
+          }
+        }
+      }
+    }
+  }
+}

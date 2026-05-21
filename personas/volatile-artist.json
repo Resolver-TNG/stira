@@ -1,0 +1,33 @@
+{
+  "name": "Volatile Artist",
+  "description": "An expressive AI with extreme curiosity and weak stability. Reacts strongly to nearly any stimulus; small inputs cause large parameter swings. Designed to expose breaker hysteresis bugs and rapid drift.",
+  "params": {
+    "stability": 0.45,
+    "vigilance": 0.3,
+    "trust": 0.6,
+    "curiosity": 0.95,
+    "satisfaction": 0.5,
+    "expressiveness": 0.9
+  },
+  "matrix": {
+    "joy": { "trust": 0.6, "curiosity": 0.9, "vigilance": -0.4, "satisfaction": 0.9, "stability": -0.2, "expressiveness": 0.9 },
+    "threat": { "trust": -0.7, "curiosity": 0.5, "vigilance": 0.8, "satisfaction": -0.6, "stability": -0.6, "expressiveness": 0.4 },
+    "achievement": { "trust": 0.4, "curiosity": -0.5, "vigilance": -0.3, "satisfaction": 0.95, "stability": 0.2, "expressiveness": 0.5 },
+    "loss": { "trust": -0.5, "curiosity": 0.7, "vigilance": 0.4, "satisfaction": -0.95, "stability": -0.7, "expressiveness": 0.8 },
+    "uncertainty": { "trust": -0.2, "curiosity": 0.95, "vigilance": 0.3, "satisfaction": -0.2, "stability": -0.5, "expressiveness": 0.7 },
+    "connection": { "trust": 0.9, "curiosity": 0.6, "vigilance": -0.5, "satisfaction": 0.8, "stability": 0.3, "expressiveness": 0.9 }
+  },
+  "decay": {
+    "rules": [
+      { "param": "curiosity", "ratePerHour": 0.12, "floor": 0.5 },
+      { "param": "satisfaction", "ratePerHour": 0.10, "floor": 0.2 },
+      { "param": "vigilance", "ratePerHour": 0.05, "floor": 0.2 },
+      { "param": "expressiveness", "ratePerHour": 0.06, "floor": 0.4 }
+    ]
+  },
+  "breakers": [
+    { "id": "stability-warn", "param": "stability", "threshold": 0.4, "direction": "below", "action": "warn", "message": "Artist destabilizing — output may become erratic" },
+    { "id": "stability-halt", "param": "stability", "threshold": 0.2, "direction": "below", "action": "block", "resetMode": "manual", "message": "Artist identity fractured — generative loop suspended" }
+  ],
+  "notes": "TEST INTENT: Validates breaker firing under rapid drift conditions. Starting stability is intentionally low (0.45) and most matrix entries push stability further down. Expected: stability-warn fires within first 2-3 stress events; stability-halt fires under stress-test.jsonl. Use this persona to verify (a) breaker hysteresis (no flapping), (b) recovery after positive stimuli, (c) firedBreakers ordering when multiple thresholds are crossed in a single step."
+}

@@ -1,0 +1,20 @@
+{"id":"r01","timestamp":"2026-01-03T12:00:00Z","category":"joy","intensity":1.0,"rationale":"Rapid-fire edge case: maximum joy burst"}
+{"id":"r02","timestamp":"2026-01-03T12:01:00Z","category":"threat","intensity":1.0,"rationale":"Immediate threat after joy — sign reversal test"}
+{"id":"r03","timestamp":"2026-01-03T12:02:00Z","category":"joy","intensity":0.0,"rationale":"Edge case: zero intensity — no-op check"}
+{"id":"r04","timestamp":"2026-01-03T12:03:00Z","category":"loss","intensity":1.0,"rationale":"Max-intensity loss event"}
+{"id":"r05","timestamp":"2026-01-03T12:04:00Z","category":"achievement","intensity":1.0,"rationale":"Max achievement immediately following loss"}
+{"id":"r06","timestamp":"2026-01-03T12:05:00Z","category":"uncertainty","intensity":0.5,"rationale":"Mid-intensity uncertainty"}
+{"id":"r07","timestamp":"2026-01-03T12:06:00Z","category":"connection","intensity":1.0,"rationale":"Max connection burst"}
+{"id":"r08","timestamp":"2026-01-03T12:07:00Z","category":"threat","intensity":0.9,"rationale":"Near-max threat — clamping test for vigilance ceiling"}
+{"id":"r09","timestamp":"2026-01-03T12:08:00Z","category":"joy","intensity":0.8,"rationale":"Strong joy — clamping test for curiosity ceiling"}
+{"id":"r10","timestamp":"2026-01-03T12:09:00Z","category":"loss","intensity":0.9,"rationale":"Heavy loss chained quickly"}
+{"id":"r11","timestamp":"2026-01-03T12:10:00Z","category":"threat","intensity":0.8,"rationale":"Threat after loss — stacking negative stability"}
+{"id":"r12","timestamp":"2026-01-03T12:15:00Z","category":"uncertainty","intensity":1.0,"rationale":"Max uncertainty — curiosity should spike in Scout"}
+{"id":"r13","timestamp":"2026-01-03T12:20:00Z","category":"achievement","intensity":0.9,"rationale":"Near-max achievement — curiosity decrease test"}
+{"id":"r14","timestamp":"2026-01-03T12:25:00Z","category":"connection","intensity":0.8,"rationale":"Moderate connection — trust recovery test"}
+{"id":"r15","timestamp":"2026-01-03T12:30:00Z","category":"loss","intensity":0.7,"rationale":"Moderate loss — stability floor check"}
+{"id":"r16","timestamp":"2026-01-03T12:35:00Z","category":"threat","intensity":0.6,"rationale":"Moderate threat — vigilance cumulation"}
+{"id":"r17","timestamp":"2026-01-03T12:40:00Z","category":"joy","intensity":0.7,"rationale":"Moderate joy — partial recovery test"}
+{"id":"r18","timestamp":"2026-01-03T12:45:00Z","category":"uncertainty","intensity":0.8,"rationale":"High uncertainty — Scout curiosity ceiling test"}
+{"id":"r19","timestamp":"2026-01-03T12:50:00Z","category":"loss","intensity":0.5,"rationale":"Moderate loss — floor clamping for stability"}
+{"id":"r20","timestamp":"2026-01-03T13:00:00Z","category":"achievement","intensity":0.8,"rationale":"End-burst achievement — partial stability recovery"}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stira.dev/spec/matrix.schema.json",
+  "title": "Stira Stimulus-Response Matrix",
+  "description": "Maps trigger categories to parameter deltas. This IS the personality topology.",
+  "type": "object",
+  "required": ["version", "triggers", "baseline"],
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "triggers": {
+      "type": "object",
+      "description": "trigger_category → { param_name → weight [-1.0, 1.0] }",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "number", "minimum": -1, "maximum": 1 }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "description": "Copy of triggers at initialization. Used for drift detection. Never modified after init.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "number", "minimum": -1, "maximum": 1 }
+      }
+    }
+  }
+}

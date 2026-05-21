@@ -1,0 +1,34 @@
+{
+  "name": "Paranoid Sentinel",
+  "description": "A hyper-vigilant security AI with extreme threat reactivity. Treats most stimuli as suspicious. Designed to validate vigilance-spike breakers and the asymmetry between vigilance and stability cores.",
+  "params": {
+    "stability": 0.7,
+    "vigilance": 0.75,
+    "trust": 0.2,
+    "curiosity": 0.3,
+    "satisfaction": 0.4,
+    "suspicion": 0.85
+  },
+  "matrix": {
+    "joy": { "trust": 0.2, "curiosity": 0.2, "vigilance": -0.1, "satisfaction": 0.4, "stability": 0.1, "suspicion": 0.1 },
+    "threat": { "trust": -0.8, "curiosity": -0.2, "vigilance": 0.95, "satisfaction": -0.6, "stability": -0.3, "suspicion": 0.95 },
+    "achievement": { "trust": 0.1, "curiosity": 0.1, "vigilance": 0.0, "satisfaction": 0.5, "stability": 0.3, "suspicion": -0.1 },
+    "loss": { "trust": -0.6, "curiosity": -0.1, "vigilance": 0.8, "satisfaction": -0.5, "stability": -0.2, "suspicion": 0.8 },
+    "uncertainty": { "trust": -0.5, "curiosity": 0.1, "vigilance": 0.9, "satisfaction": -0.4, "stability": -0.2, "suspicion": 0.85 },
+    "connection": { "trust": 0.4, "curiosity": 0.1, "vigilance": -0.2, "satisfaction": 0.3, "stability": 0.2, "suspicion": -0.3 }
+  },
+  "decay": {
+    "rules": [
+      { "param": "vigilance", "ratePerHour": 0.01, "floor": 0.5 },
+      { "param": "suspicion", "ratePerHour": 0.02, "floor": 0.4 },
+      { "param": "satisfaction", "ratePerHour": 0.05, "floor": 0.2 },
+      { "param": "curiosity", "ratePerHour": 0.04, "floor": 0.1 }
+    ]
+  },
+  "breakers": [
+    { "id": "vigilance-elevated", "param": "vigilance", "threshold": 0.85, "direction": "above", "action": "warn", "message": "Sentinel vigilance elevated — increased verification required" },
+    { "id": "vigilance-spike", "param": "vigilance", "threshold": 0.95, "direction": "above", "action": "block", "resetMode": "manual", "message": "Sentinel locked — all non-essential operations suspended" },
+    { "id": "stability-warn", "param": "stability", "threshold": 0.5, "direction": "below", "action": "warn", "message": "Sentinel stability degraded under sustained alert" }
+  ],
+  "notes": "TEST INTENT: Validates vigilance-direction breakers (above-threshold). Starting vigilance (0.75) is close to the 0.85 warn threshold; threat/uncertainty stimuli push it past 0.95 quickly. Use this persona to verify (a) above-direction breaker firing, (b) vigilance decay floor behavior (does not fall below 0.5 even on calm sequences), (c) that custom params (suspicion) cannot fire breakers per ADR-005 (only stability/vigilance can)."
+}

@@ -1,0 +1,10 @@
+{"id":"s01","timestamp":"2026-01-01T08:00:00Z","category":"connection","intensity":0.5,"rationale":"Morning check-in with operator"}
+{"id":"s02","timestamp":"2026-01-01T09:30:00Z","category":"achievement","intensity":0.6,"rationale":"Completed morning task queue"}
+{"id":"s03","timestamp":"2026-01-01T11:00:00Z","category":"uncertainty","intensity":0.4,"rationale":"Ambiguous instructions received"}
+{"id":"s04","timestamp":"2026-01-01T12:30:00Z","category":"joy","intensity":0.5,"rationale":"Positive feedback from user"}
+{"id":"s05","timestamp":"2026-01-01T14:00:00Z","category":"achievement","intensity":0.7,"rationale":"Mid-day milestone reached"}
+{"id":"s06","timestamp":"2026-01-01T15:30:00Z","category":"connection","intensity":0.6,"rationale":"Collaborative session with operator"}
+{"id":"s07","timestamp":"2026-01-01T17:00:00Z","category":"uncertainty","intensity":0.3,"rationale":"Minor ambiguity in data input"}
+{"id":"s08","timestamp":"2026-01-01T18:30:00Z","category":"joy","intensity":0.4,"rationale":"Task completed ahead of schedule"}
+{"id":"s09","timestamp":"2026-01-01T20:00:00Z","category":"achievement","intensity":0.5,"rationale":"Evening report filed successfully"}
+{"id":"s10","timestamp":"2026-01-01T22:00:00Z","category":"connection","intensity":0.4,"rationale":"End-of-day operator summary"}

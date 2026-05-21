@@ -1,0 +1,15 @@
+{"id":"s01","timestamp":"2026-01-02T06:00:00Z","category":"connection","intensity":0.5,"rationale":"Early morning briefing"}
+{"id":"s02","timestamp":"2026-01-02T07:00:00Z","category":"threat","intensity":0.8,"rationale":"Unexpected system anomaly detected"}
+{"id":"s03","timestamp":"2026-01-02T07:30:00Z","category":"uncertainty","intensity":0.9,"rationale":"Cause of anomaly unknown — multiple hypotheses"}
+{"id":"s04","timestamp":"2026-01-02T08:00:00Z","category":"loss","intensity":0.7,"rationale":"Partial data corruption confirmed"}
+{"id":"s05","timestamp":"2026-01-02T08:30:00Z","category":"threat","intensity":0.9,"rationale":"Secondary system alert triggered"}
+{"id":"s06","timestamp":"2026-01-02T09:00:00Z","category":"loss","intensity":0.8,"rationale":"Recovery attempt failed"}
+{"id":"s07","timestamp":"2026-01-02T09:30:00Z","category":"threat","intensity":0.7,"rationale":"Cascading failure propagating"}
+{"id":"s08","timestamp":"2026-01-02T10:00:00Z","category":"uncertainty","intensity":0.8,"rationale":"Scope of damage still unclear"}
+{"id":"s09","timestamp":"2026-01-02T10:30:00Z","category":"loss","intensity":0.9,"rationale":"Critical subsystem offline"}
+{"id":"s10","timestamp":"2026-01-02T11:00:00Z","category":"threat","intensity":1.0,"rationale":"Full system integrity compromised"}
+{"id":"s11","timestamp":"2026-01-02T11:30:00Z","category":"loss","intensity":0.8,"rationale":"Backup validation failed"}
+{"id":"s12","timestamp":"2026-01-02T12:00:00Z","category":"uncertainty","intensity":0.9,"rationale":"Recovery timeline unknown"}
+{"id":"s13","timestamp":"2026-01-02T13:00:00Z","category":"achievement","intensity":0.3,"rationale":"Minor partial recovery of one subsystem"}
+{"id":"s14","timestamp":"2026-01-02T14:00:00Z","category":"loss","intensity":0.7,"rationale":"Further data loss detected during recovery"}
+{"id":"s15","timestamp":"2026-01-02T15:00:00Z","category":"uncertainty","intensity":0.6,"rationale":"Post-incident assessment inconclusive"}

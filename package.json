@@ -1,0 +1,25 @@
+{
+  "name": "stira",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Constrained state machine for managing AI agent behavioral state (drift detection + circuit breakers).",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Resolver-TNG/stira.git"
+  },
+  "workspaces": [
+    "engine",
+    "cli",
+    "adapters/openclaw"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm test --workspace=engine",
+    "simulate": "node cli/dist/index.js simulate",
+    "simulate:all": "bash scripts/run-all-simulations.sh"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
