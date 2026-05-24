@@ -26,7 +26,7 @@ jobs:
       - name: Install & Build Engine
         run: |
           cd engine
-          npm ci
+          npm install
           npm run build
 
       - name: Test Engine
@@ -37,5 +37,5 @@ jobs:
       - name: Build CLI
         run: |
           cd cli
-          npm ci
+          npm install
           npm run build
